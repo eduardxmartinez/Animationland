@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animationland</title>
+    <style>
+        body {
+            counter-reset: game;
+            margin: 0;
+            height: 100vh;
+            width: 100%;
+            display: grid;
+            place-items: center;
+        }
+        input:checked {
+            counter-increment: game;
+        }
+        .score::after {
+            content: counter(game);
+        }
+        .phone {
+            position: relative;
+            border: 8px solid black;
+            border-radius: 40px;
+            height: 600px;
+            width: 300px;
+            background-color: #CCEFFF;
+            box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22);
+        }
+        .phone div {
+            position: absolute;
+        }
+        input[type=checkbox] {
+            appearance: none;
+            cursor: pointer;
+            height: 50px;
+            margin: 0;
+            position: relative;
+            top: 0;
+            width: 80px;
+            z-index: 2;
+        }
+        .layer-1 {
+            z-index: 1;
+            height: 450px;
+            width: 80px;
+            bottom: 0;
+            right: 60px;
+            animation: mvmt1 2s ease-in-out 0s infinite;
+        }
+        @keyframes mvmt1 {
+            0% {
+                bottom: 0;
+            }
+            25% {
+                bottom: -50px;
+            }
+            100% {
+                bottom: 0;
+            }
+        }
+        
+        .layer-2 {
+            z-index: 2;
+            height: 450px;
+            width: 80px;
+            bottom: 0;
+            left: 60px;
+            animation: mvmt2 3s cubic-bezier(0.075, 0.82, 0.165, 1) 0s infinite;
+        }
+        @keyframes mvmt2 {
+            0% {
+                bottom: 0;
+            }
+            20% {
+                bottom: -50px
+            }
+            80% {
+                bottom: -50px;
+            }
+            100% {
+                bottom: 0;
+            }
+        }
+        .layer-3 {
+            z-index: 3;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 230px;
+            height: 400px;
+            background-color: #cc7252;
+            bottom: 0;
+            border-radius: 20px;
+            box-shadow: 0px 20px 30px 5px rgba(0, 0, 0, 0.5)
+        }
+        .layer-4 {
+            z-index: 4;
+            height: 350px;
+            width: 80px;
+            bottom: 0;
+            left: 25px;
+            animation: mvmt3 4s linear 0s infinite;
+        }
+        @keyframes mvmt3 {
+            0% {
+                bottom: 0;
+            }
+            10% {
+                bottom: -50px;
+            }
+            90% {
+                bottom: -50px;
+            }
+            100% {
+                bottom: 0;
+            }
+        }
+        .layer-5 {
+            z-index: 5;
+            width: 220px;
+            height: 300px;
+            background-color: #cc7252;
+            bottom: 0;
+            border-radius: 20px 20px 0 30px;
+            box-shadow: 0px 20px 30px 5px rgba(0, 0, 0, 0.5)
+        }
+        .layer-6 {
+            z-index: 6;
+            height: 250px;
+            width: 80px;
+            bottom: 0;
+            right: 25px;
+            animation: mvmt4 3s cubic-bezier(0.19, 1, 0.22, 1) 0s infinite;
+        }
+        @keyframes mvmt4 {
+            0% {
+                bottom: 0;
+            }
+            25% {
+                bottom: -50px;
+            }
+            85% {
+                bottom: -50px;
+            }
+            100% {
+                bottom: 0;
+            }
+        }
+        .layer-7 {
+            z-index: 7;
+            width: 130px;
+            height: 200px;
+            background-color: #cc7252;
+            bottom: 0;
+            right: 0;
+            border-radius: 20px 20px 30px 0;
+            box-shadow: 0px 20px 30px 5px rgba(0, 0, 0, 0.5)
+        }
+
+        .layer-8 {
+            z-index: 8;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 200px;
+            height: 130px;
+            bottom: 0;
+        }
+        .lawn-left {
+            left: 0;
+            width: 80px;
+            height: 105px;
+            background-color: #5BAB71;
+            bottom: 0;
+            border-radius: 40px 40px 0 0;
+        }
+        .lawn-middle {
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: 80px;
+            height: 130px;
+            background-color: #5BAB71;
+            bottom: 0;
+            border-radius: 40px 40px 0 0;
+        }
+        .lawn-right {
+            right: 0;
+            width: 80px;
+            height: 110px;
+            background-color: #5BAB71;
+            bottom: 0;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .layer-9 {
+            z-index: 9;
+            left: 0;
+            width: 110px;
+            height: 100px;
+            bottom: 0;
+            border-radius: 0 0 0 30px;
+        }
+        .layer-9 .left-cloud {
+            left: 0;
+            width: 70px;
+            height: 115px;
+            background-color: white;
+            bottom: 0;
+            border-radius: 55px 55px 0 45px;
+        }
+        .layer-9 .right-cloud {
+            left: 70px;
+            width: 50px;
+            height: 80px;
+            background-color: white;
+            bottom: 0;
+            border-radius: 0 55px 35px 0;
+        }
+        .layer-10 {
+            z-index: 10;
+            right: 0;
+            width: 110px;
+            height: 100px;
+            bottom: 0;
+            border-radius: 0 0 30px 0;
+        }
+        .layer-10 .left-cloud {
+            right: 70px;
+            width: 50px;
+            height: 80px;
+            background-color: white;
+            bottom: 0;
+            border-radius: 55px 0 0 35px;
+        }
+        .layer-10 .right-cloud {
+            right: 0;
+            width: 70px;
+            height: 115px;
+            background-color: white;
+            bottom: 0;
+            border-radius: 55px 55px 50px 0;
+        }
+        .left-ear--outer {
+            position: absolute;
+            background: white;
+            border-radius: 90%;
+            width: 20px;
+            height: 50px;
+            left: 10px;
+            top: 0;
+        }
+
+        .left-ear--inner {
+            position: absolute;
+            background: pink;
+            border-radius: 90%;
+            width: 10px;
+            height: 50px;
+            left: 15px;
+            top: 8px;
+        }
+
+        .right-ear--outer {
+            position: absolute;
+            background: white;
+            border-radius: 90%;
+            width: 20px;
+            height: 50px;
+            right: 10px;
+            top: 0;
+        }
+
+        .right-ear--inner {
+            position: absolute;
+            background: pink;
+            border-radius: 90%;
+            width: 10px;
+            height: 50px;
+            right: 15px;
+            top: 8px;
+        }
+
+        .head {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            height: 80px;
+            width: 100%;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            top: 30px;
+        }
+
+        .head__eye {
+            background-color: grey;
+            border-radius: 50%;
+            width: 5px;
+            height: 5px;
+            position: absolute;
+            top: 15px;
+            animation-name: blink;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes blink {
+            0% {
+                height: 4px;
+            }
+
+            5% {
+                transform: translate(0px, 2px);
+                height: 1px;
+            }
+
+            10% {
+                transform: translate(0px, 0px);
+                height: 4px;
+            }
+        }
+
+        .head__eye-left {
+            left: 30px;
+        }
+
+        .head__eye-right {
+            right: 30px;
+        }
+
+        .background-upper {
+            height: 10px;
+            width: 100%;
+            background-color: #5BAB71;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .background-middle {
+            height: 10px;
+            width: 100%;
+            background-color: #B35839;
+            opacity: 1;
+            background-image: linear-gradient(135deg, #5BAB71 25%, transparent 25%), linear-gradient(225deg, #5BAB71 25%, transparent 25%), linear-gradient(45deg, #5BAB71 25%, transparent 25%), linear-gradient(315deg, #5BAB71 25%, #B35839 25%);
+            top: 10px;
+            background-size: 20px 20px;
+        }
+
+        .background-low {
+            height: 10px;
+            width: 100%;
+            background-color: #cc7252;
+            opacity: 1;
+            background-image: linear-gradient(135deg, #B35839 25%, transparent 25%), linear-gradient(225deg, #B35839 25%, transparent 25%), linear-gradient(45deg, #B35839 25%, transparent 25%), linear-gradient(315deg, #B35839 25%, #cc7252 25%);
+            top: 20px;
+            background-size: 20px 20px;
+        }
+        .title {
+            display: flex;
+            justify-content: center;
+            margin: 45px 0 20px;
+        }
+
+        .title img {
+            width: 80%;
+        }
+
+        .score {
+            color: #bf624c;
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+            margin: 0;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="phone">
+        <div class="layer-1">
+            <input type="checkbox" name="" id="">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye-left"></div>
+                <div class="head__eye head__eye-right"></div>
+            </div>
+        </div>
+        <div class="layer-2">
+            <input type="checkbox" name="" id="">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye-left"></div>
+                <div class="head__eye head__eye-right"></div>
+            </div>
+        </div>
+        <div class="layer-3">
+            <div class="background-upper"></div>
+            <div class="background-middle"></div>
+            <div class="background-low"></div>
+        </div>
+        <div class="layer-4">
+            <input type="checkbox" name="" id="">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye-left"></div>
+                <div class="head__eye head__eye-right"></div>
+            </div>
+        </div>
+        <div class="layer-5">
+            <div class="background-upper"></div>
+            <div class="background-middle"></div>
+            <div class="background-low"></div>
+        </div>
+        <div class="layer-6">
+            <input type="checkbox" name="" id="">
+            <div class="left-ear--outer"></div>
+            <div class="left-ear--inner"></div>
+            <div class="right-ear--outer"></div>
+            <div class="right-ear--inner"></div>
+            <div class="head">
+                <div class="head__eye head__eye-left"></div>
+                <div class="head__eye head__eye-right"></div>
+            </div>
+        </div>
+        <div class="layer-7">
+            <div class="background-upper"></div>
+            <div class="background-middle"></div>
+            <div class="background-low"></div>
+        </div>
+        <div class="layer-8">
+            <div class="lawn-left"></div>
+            <div class="lawn-middle"></div>
+            <div class="lawn-right"></div>
+        </div>
+        <div class="layer-9">
+            <div class="left-cloud"></div>
+            <div class="right-cloud"></div>
+        </div>
+        <div class="layer-10">
+            <div class="left-cloud"></div>
+            <div class="right-cloud"></div>
+        </div>
+        <h1 class="title">
+            <img src="https://i.ibb.co/J3Kn71r/cbd152ddb203fe23ad78261749534e7d.png" alt="Animationland">
+        </h1>
+        <h2 class="score">Score: </h2>
+    </div>
+</body>
+
+</html>
